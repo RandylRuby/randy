@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鱼很晚 | 摄影作品集</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        body { font-family: 'Noto Sans SC', sans-serif; }
+        .hero-overlay { background: linear-gradient(to right, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.1)); }
+        .project-card:hover .project-overlay { opacity: 1; }
+        .project-overlay { transition: all 0.3s ease; opacity: 0; }
+        .social-icon { transition: transform 0.3s ease; }
+        .social-icon:hover { transform: translateY(-5px); }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <nav class="bg-white shadow-md fixed w-full z-10">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-xl font-bold text-gray-800">鱼很晚</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html#about" class="text-gray-600 hover:text-gray-900">关于我</a>
+                <a href="index.html#projects" class="text-gray-600 hover:text-gray-900">精选作品</a>
+                <a href="index.html#contact" class="text-gray-600 hover:text-gray-900">联系方式</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-600 hover:text-gray-900">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative py-32 bg-cover bg-center" style="background-image: url('picture/摄影集背景.JPG');">
+        <div class="hero-overlay absolute inset-0"></div>
+        <div class="container mx-auto px-6 z-10 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold text-gray-800 mb-4">摄影作品集</h1>
+            <p class="text-xl md:text-2xl text-gray-800">记录旅途中的美丽瞬间</p>
+        </div>
+    </header>
+
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card" onclick="openModal('sanya')">
+                    <div class="relative">
+                        <img src="三亚/背景.jpeg" alt="作品1" class="w-full h-64 object-cover">
+                        <div class="project-overlay absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4">
+                            <div class="text-white text-center">
+                                <h4 class="text-xl font-bold mb-2">作品一</h4>
+                                <p class="mb-4">三亚</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card" onclick="openModal('zanglingyang')">
+                    <div class="relative">
+                        <img src="藏羚羊/背景.jpeg" alt="作品2" class="w-full h-64 object-cover">
+                        <div class="project-overlay absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4">
+                            <div class="text-white text-center">
+                                <h4 class="text-xl font-bold mb-2">作品二</h4>
+                                <p class="mb-4">藏羚羊</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card" onclick="openModal('wanghonglang')">
+                    <div class="relative">
+                        <img src="网红狼/背景.jpeg" alt="作品3" class="w-full h-64 object-cover">
+                        <div class="project-overlay absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4">
+                            <div class="text-white text-center">
+                                <h4 class="text-xl font-bold mb-2">作品三</h4>
+                                <p class="mb-4">网红狼</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 添加更多作品卡片 -->
+
+<!-- 三亚模态框 -->
+<div id="modal-sanya" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black bg-opacity-75"></div>
+    <div class="fixed inset-0 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-lg max-w-3xl w-full relative">
+            <div class="flex justify-between items-center p-4 border-b">
+                <h3 class="text-xl font-bold">三亚风景</h3>
+                <button onclick="closeModal('sanya')" class="text-gray-600 hover:text-gray-900">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="p-4">
+                <div class="relative overflow-hidden">
+                    <div id="carousel-sanya" class="flex transition-transform duration-300 ease-in-out"></div>
+                </div>
+                <div class="flex justify-center space-x-4 mt-4">
+                    <button onclick="prevImage('sanya')" class="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700">上一张</button>
+                    <button onclick="nextImage('sanya')" class="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700">下一张</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 藏羚羊模态框 -->
+<div id="modal-zanglingyang" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black bg-opacity-75"></div>
+    <div class="fixed inset-0 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-lg max-w-3xl w-full relative">
+            <div class="flex justify-between items-center p-4 border-b">
+                <h3 class="text-xl font-bold">藏羚羊</h3>
+                <button onclick="closeModal('zanglingyang')" class="text-gray-600 hover:text-gray-900">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="p-4">
+                <div class="relative overflow-hidden">
+                    <div id="carousel-zanglingyang" class="flex transition-transform duration-300 ease-in-out"></div>
+                </div>
+                <div class="flex justify-center space-x-4 mt-4">
+                    <button onclick="prevImage('zanglingyang')" class="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700">上一张</button>
+                    <button onclick="nextImage('zanglingyang')" class="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700">下一张</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 网红狼模态框 -->
+<div id="modal-wanghonglang" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black bg-opacity-75"></div>
+    <div class="fixed inset-0 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-lg max-w-3xl w-full relative">
+            <div class="flex justify-between items-center p-4 border-b">
+                <h3 class="text-xl font-bold">网红狼</h3>
+                <button onclick="closeModal('wanghonglang')" class="text-gray-600 hover:text-gray-900">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="p-4">
+                <div class="relative overflow-hidden">
+                    <div id="carousel-wanghonglang" class="flex transition-transform duration-300 ease-in-out"></div>
+                </div>
+                <div class="flex justify-center space-x-4 mt-4">
+                    <button onclick="prevImage('wanghonglang')" class="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700">上一张</button>
+                    <button onclick="nextImage('wanghonglang')" class="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700">下一张</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-10">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-2">鱼很晚</h3>
+                    <p class="text-gray-400">AI新手小白，努力破局，争取变现</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-weixin text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 鱼很晚. 版权所有.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 图片数据
+        const imageCollections = {
+            sanya: [
+                '三亚/1.jpeg',
+                '三亚/2.jpeg',
+                '三亚/3.jpeg',
+                '三亚/4.jpeg',
+                '三亚/5.jpeg',
+                '三亚/6.jpeg',
+                '三亚/7.jpeg'
+            ],
+            zanglingyang: [
+                '藏羚羊/1.jpeg',
+                '藏羚羊/2.jpeg',
+                '藏羚羊/3.jpeg',
+                '藏羚羊/4.jpeg'
+                
+            ],
+            wanghonglang: [
+                '网红狼/1.jpeg',
+                '网红狼/2.jpeg',
+                '网红狼/3.jpeg',
+                '网红狼/4.jpeg'
+                
+            ]
+        };
+
+        // 当前索引
+        const currentIndices = {
+            sanya: 0,
+            zanglingyang: 0,
+            wanghonglang: 0
+        };
+
+        function openModal(collection) {
+            document.getElementById(`modal-${collection}`).classList.remove('hidden');
+            renderCarousel(collection);
+        }
+
+        function closeModal(collection) {
+            document.getElementById(`modal-${collection}`).classList.add('hidden');
+        }
+
+        function renderCarousel(collection) {
+            const carousel = document.getElementById(`carousel-${collection}`);
+            carousel.innerHTML = imageCollections[collection].map((img, index) => 
+                `<div class="w-full flex-shrink-0">
+                    <img src="${img}" alt="${collection}图片" class="w-full h-auto">
+                </div>`
+            ).join('');
+            updateCarousel(collection);
+        }
+
+        function updateCarousel(collection) {
+            const carousel = document.getElementById(`carousel-${collection}`);
+            carousel.style.transform = `translateX(-${currentIndices[collection] * 100}%)`;
+        }
+
+        function prevImage(collection) {
+            currentIndices[collection] = (currentIndices[collection] - 1 + imageCollections[collection].length) % imageCollections[collection].length;
+            updateCarousel(collection);
+        }
+
+        function nextImage(collection) {
+            currentIndices[collection] = (currentIndices[collection] + 1) % imageCollections[collection].length;
+            updateCarousel(collection);
+        }
+    </script>
+</body>
+</html>

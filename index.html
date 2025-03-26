@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鱼很晚 | 个人主页</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome 图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.6));
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .project-overlay {
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+        
+        .social-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md fixed w-full z-10">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-xl font-bold text-gray-800">鱼很晚</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#about" class="text-gray-600 hover:text-gray-900">关于我</a>
+                <a href="#projects" class="text-gray-600 hover:text-gray-900">精选作品</a>
+                <a href="#contact" class="text-gray-600 hover:text-gray-900">联系方式</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-600 hover:text-gray-900">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden bg-white pb-4 shadow-inner">
+            <div class="container mx-auto px-4 flex flex-col space-y-3">
+                <a href="#about" class="text-gray-600 hover:text-gray-900 py-2">关于我</a>
+                <a href="#projects" class="text-gray-600 hover:text-gray-900 py-2">精选作品</a>
+                <a href="#contact" class="text-gray-600 hover:text-gray-900 py-2">联系方式</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <header class="relative h-screen flex items-center">
+        <div class="absolute inset-0 z-0">
+            <img src="picture/背景.jpeg" alt="背景" class="w-full h-full object-cover">
+            <div class="hero-overlay absolute inset-0"></div>
+        </div>
+        <div class="container mx-auto px-6 z-10 flex flex-col md:flex-row items-center">
+            <div class="text-white md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-5xl md:text-6xl font-bold mb-4">鱼很晚</h1>
+                <p class="text-xl md:text-2xl mb-8">AI新手小白，努力破局，争取变现</p>
+                <div class="flex space-x-4">
+                    <a href="#about" class="bg-white text-gray-900 hover:bg-gray-200 px-6 py-3 rounded-md font-medium transition duration-300">了解更多</a>
+                    <a href="#contact" class="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-6 py-3 rounded-md font-medium transition duration-300">联系我</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="bg-gray-800 p-1 rounded-full">
+                    <img src="picture/个人照片.jpg" alt="个人照片" class="w-64 h-64 rounded-full object-cover">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 关于我 -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">关于我</h2>
+                <div class="w-20 h-1 bg-gray-800 mx-auto"></div>
+            </div>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <img src="picture/个人.jpeg" alt="旅游照片" class="rounded-lg shadow-lg w-full h-auto">
+                </div>
+                <div class="md:w-1/2 md:pl-10">
+                    <h3 class="text-2xl font-bold mb-4">鱼很晚</h3>
+                    <p class="text-gray-600 mb-6">
+                        AI新手小白，努力破局，争取变现。热爱旅游摄影，享受在旅途中捕捉美丽瞬间的乐趣。
+                        通过公众号和小程序，分享AI学习心得和实用技巧，希望能与更多志同道合的朋友一起成长。
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-camera text-gray-800 mr-3 text-xl"></i>
+                            <span>旅游摄影</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-robot text-gray-800 mr-3 text-xl"></i>
+                            <span>AI学习</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fab fa-weixin text-gray-800 mr-3 text-xl"></i>
+                            <span>公众号创作</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-mobile-alt text-gray-800 mr-3 text-xl"></i>
+                            <span>小程序开发</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 精选作品 -->
+    <section id="projects" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">精选作品</h2>
+                <div class="w-20 h-1 bg-gray-800 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 项目1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                    <div class="relative">
+                        <img src="picture/公众号背景.jpeg" alt="公众号作品" class="w-full h-64 object-cover">
+                        <div class="project-overlay absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4">
+                            <div class="text-white text-center">
+                                <h4 class="text-xl font-bold mb-2">公众号：yuhenwan_0520</h4>
+                                <p class="mb-4">AI学习心得与技巧分享和旅游经历</p>
+                                
+<button onclick="window.location.href='https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzk3NTU1OTExOQ==&action=getalbum&album_id=3893932101191516179#wechat_redirect'" class="inline-block px-4 py-2 border-2 border-white text-white hover:bg-white hover:text-gray-900 rounded-md transition duration-300">查看详情</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2">公众号内容创作</h4>
+                        <p class="text-gray-600">分享AI学习过程中的经验和心得，分享旅游经历</p>
+                    </div>
+                </div>
+                
+                <!-- 项目2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                    <div class="relative">
+                        <img src="picture/小程序背景.png" alt="小程序作品" class="w-full h-64 object-cover">
+                        <div class="project-overlay absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4">
+                            <div class="text-white text-center">
+                                <h4 class="text-xl font-bold mb-2">小程序：一切皆有答案</h4>
+                                <p class="mb-4">答案之书解答你心中困惑</p>
+                                
+<button onclick="document.getElementById('qrcode-modal').classList.remove('hidden')" class="inline-block px-4 py-2 border-2 border-white text-white hover:bg-white hover:text-gray-900 rounded-md transition duration-300">查看详情</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2">微信小程序开发</h4>
+                        <p class="text-gray-600">通过AI编程，快速搭建小程序</p>
+                    </div>
+                </div>
+                
+                <!-- 项目3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                    <div class="relative">
+                        <img src="picture/摄影背景.jpeg" alt="摄影作品" class="w-full h-64 object-cover">
+                        <div class="project-overlay absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4">
+                            <div class="text-white text-center">
+                                <h4 class="text-xl font-bold mb-2">旅行摄影集</h4>
+                                <p class="mb-4">记录旅途中的美丽风景</p>
+                                
+<button onclick="window.location.href='photography.html'" class="inline-block px-4 py-2 border-2 border-white text-white hover:bg-white hover:text-gray-900 rounded-md transition duration-300">查看详情</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2">旅游摄影作品</h4>
+                        <p class="text-gray-600">用镜头捕捉旅行中的精彩瞬间和壮丽景色</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">联系方式</h2>
+                <div class="w-20 h-1 bg-gray-800 mx-auto"></div>
+            </div>
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-16">
+                <div class="flex flex-col items-center social-icon">
+                    <div class="w-16 h-16 flex items-center justify-center mb-4">
+                        <img src="picture/公众号码.jpg" alt="公众号码" class="w-full h-auto">
+                    </div>
+                    <h4 class="text-lg font-bold">公众号</h4>
+                    <p class="text-gray-600">yuhenwan_0520</p>
+                </div>
+                <div class="flex flex-col items-center social-icon">
+                    <div class="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                        <img src="picture/小程序码.png" alt="小程序码" class="w-full h-full rounded-full object-cover">
+                    </div>
+                    <h4 class="text-lg font-bold">小程序</h4>
+                    <p class="text-gray-600">一切皆有答案</p>
+                </div>
+                <div class="flex flex-col items-center social-icon">
+                    <div class="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                        <i class="fas fa-envelope text-3xl text-gray-800"></i>
+                    </div>
+                    <h4 class="text-lg font-bold">邮箱</h4>
+                    <p class="text-gray-600">randyruby@163.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-900 text-white py-10">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-2">鱼很晚</h3>
+                    <p class="text-gray-400">AI新手小白，努力破局，争取变现</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-weixin text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 鱼很晚. 版权所有.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 小程序二维码模态框 -->
+    <div id="qrcode-modal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black bg-opacity-75"></div>
+        <div class="fixed inset-0 flex items-center justify-center p-4">
+            <div class="bg-white rounded-lg shadow-lg max-w-md w-full relative">
+                <div class="flex justify-between items-center p-4 border-b">
+                    <h3 class="text-xl font-bold">一切皆有答案</h3>
+                    <button onclick="closeQRCodeModal()" class="text-gray-600 hover:text-gray-900">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="p-6 flex flex-col items-center">
+                    <img src="picture/小程序码.png" alt="小程序二维码" class="w-64 h-64 object-contain mb-4">
+                    <p class="text-gray-600 text-center">扫描二维码进入小程序</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 如果是移动端菜单，点击后关闭
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // 小程序二维码模态框功能
+        function closeQRCodeModal() {
+            document.getElementById('qrcode-modal').classList.add('hidden');
+        }
+
+        // 点击模态框外部关闭
+        document.getElementById('qrcode-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeQRCodeModal();
+            }
+        });
+    </script>
+</body>
+</html>
